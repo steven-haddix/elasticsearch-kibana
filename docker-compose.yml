@@ -1,0 +1,21 @@
+version: '2'
+services:
+   kibana:
+      image: kibana:latest
+      ports:
+         - "5601"
+      depends_on:
+         - elasticsearch
+      networks:
+         - docker_elk
+   elasticsearch:
+      image: elasticsearch:latest
+      ports:
+         - "9200"
+         - "9300"
+      networks:
+         - docker_elk
+
+networks:
+  docker_elk:
+    driver: bridge
